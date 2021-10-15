@@ -1,11 +1,11 @@
-prefix=/root/Sato/depends/x86_64-w64-mingw32
+prefix=/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
 Name: Sato Core consensus library
 Description: Library for the Sato consensus protocol.
-Version: 1.1.4
+Version: 1.1.5
 Libs: -L${libdir} -lsatoconsensus
 Cflags: -I${includedir}
 Requires.private: libcrypto

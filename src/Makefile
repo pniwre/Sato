@@ -119,7 +119,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-pc-linux-gnu
-host_triplet = x86_64-w64-mingw32
+host_triplet = x86_64-pc-linux-gnu
 bin_PROGRAMS = $(am__EXEEXT_1) $(am__EXEEXT_2) $(am__EXEEXT_3) \
 	$(am__EXEEXT_4) $(am__EXEEXT_5) $(am__EXEEXT_6) \
 	$(am__EXEEXT_7)
@@ -131,9 +131,9 @@ am__append_2 = sato-cli
 am__append_4 = crypto/sha256_sse4.cpp
 #am__append_5 = compat/glibc_compat.cpp
 #am__append_6 = $(COMPAT_LDFLAGS)
-am__append_7 = satod-res.rc
-am__append_8 = sato-cli-res.rc
-am__append_9 = sato-tx-res.rc
+#am__append_7 = satod-res.rc
+#am__append_8 = sato-cli-res.rc
+#am__append_9 = sato-tx-res.rc
 #am__append_10 = compat/glibc_compat.cpp
 am__append_11 = $(LIBLEVELDB_INT) \
 	$(LIBMEMENV_INT) \
@@ -142,11 +142,11 @@ am__append_12 = $(LIBLEVELDB_INT)
 am__append_13 = $(LIBMEMENV_INT)
 am__append_14 = -I$(srcdir)/leveldb/include \
 	-I$(srcdir)/leveldb/helpers/memenv
-am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
-#am__append_16 = -DLEVELDB_PLATFORM_POSIX
-am__append_17 = leveldb/util/env_win.cc \
-	leveldb/port/port_win.cc
-#am__append_18 = leveldb/port/port_posix.cc
+#am__append_15 = -DLEVELDB_PLATFORM_WINDOWS -DWINVER=0x0500 -D__USE_MINGW_ANSI_STDIO=1
+am__append_16 = -DLEVELDB_PLATFORM_POSIX
+#am__append_17 = leveldb/util/env_win.cc \
+#	leveldb/port/port_win.cc
+am__append_18 = leveldb/port/port_posix.cc
 am__append_19 = -DLEVELDB_PLATFORM_POSIX_SSE
 am__append_20 = $(SSE42_CXXFLAGS)
 am__append_21 = test/test_sato
@@ -170,10 +170,10 @@ am__append_31 = $(LIBSATO_WALLET) $(LIBSATO_CRYPTO)
 am__append_32 = $(CLEAN_SATO_BENCH)
 am__append_33 = qt/sato-qt
 am__append_34 = qt/libsatoqt.a
-am__append_35 = $(SATO_QT_WINDOWS_CPP)
+#am__append_35 = $(SATO_QT_WINDOWS_CPP)
 am__append_36 = $(SATO_QT_WALLET_CPP)
 #am__append_37 = $(SATO_MM)
-am__append_38 = $(SATO_RC)
+#am__append_38 = $(SATO_RC)
 am__append_39 = $(LIBSATO_WALLET)
 am__append_40 = $(LIBSATO_ZMQ) $(ZMQ_LIBS)
 am__append_41 = $(CLEAN_QT)
@@ -337,9 +337,9 @@ am__leveldb_libleveldb_a_SOURCES_DIST = leveldb/port/atomic_pointer.h \
 	leveldb/util/options.cc leveldb/util/status.cc \
 	leveldb/util/env_win.cc leveldb/port/port_win.cc \
 	leveldb/port/port_posix.cc
-am__objects_2 = leveldb/util/leveldb_libleveldb_a-env_win.$(OBJEXT) \
-	leveldb/port/leveldb_libleveldb_a-port_win.$(OBJEXT)
-#am__objects_3 = leveldb/port/leveldb_libleveldb_a-port_posix.$(OBJEXT)
+#am__objects_2 = leveldb/util/leveldb_libleveldb_a-env_win.$(OBJEXT) \
+#	leveldb/port/leveldb_libleveldb_a-port_win.$(OBJEXT)
+am__objects_3 = leveldb/port/leveldb_libleveldb_a-port_posix.$(OBJEXT)
 am_leveldb_libleveldb_a_OBJECTS = leveldb/db/leveldb_libleveldb_a-builder.$(OBJEXT) \
 	leveldb/db/leveldb_libleveldb_a-c.$(OBJEXT) \
 	leveldb/db/leveldb_libleveldb_a-dbformat.$(OBJEXT) \
@@ -939,8 +939,8 @@ am__objects_11 =  \
 	qt/qt_libsatoqt_a-trafficgraphwidget.$(OBJEXT) \
 	qt/qt_libsatoqt_a-utilitydialog.$(OBJEXT)
 am__objects_12 = qt/qt_libsatoqt_a-winshutdownmonitor.$(OBJEXT)
-am__objects_13 =  \
-	$(am__objects_12)
+#am__objects_13 =  \
+#	$(am__objects_12)
 am__objects_14 =  \
 	qt/qt_libsatoqt_a-addressbookpage.$(OBJEXT) \
 	qt/qt_libsatoqt_a-addresstablemodel.$(OBJEXT) \
@@ -1318,8 +1318,8 @@ am__objects_29 =  \
 #am__objects_30 =  \
 #	$(am__objects_29)
 am__objects_31 = qt/res/sato-qt-res.$(OBJEXT)
-am__objects_32 =  \
-	$(am__objects_31)
+#am__objects_32 =  \
+#	$(am__objects_31)
 am_qt_sato_qt_OBJECTS = qt/qt_sato_qt-sato.$(OBJEXT) \
 	$(am__objects_30) $(am__objects_32)
 qt_sato_qt_OBJECTS = $(am_qt_sato_qt_OBJECTS)
@@ -1398,7 +1398,7 @@ qt_test_test_sato_qt_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX \
 	$(qt_test_test_sato_qt_CXXFLAGS) $(CXXFLAGS) \
 	$(qt_test_test_sato_qt_LDFLAGS) $(LDFLAGS) -o $@
 am__sato_cli_SOURCES_DIST = sato-cli.cpp sato-cli-res.rc
-am__objects_37 = sato-cli-res.$(OBJEXT)
+#am__objects_37 = sato-cli-res.$(OBJEXT)
 am_sato_cli_OBJECTS = sato_cli-sato-cli.$(OBJEXT) $(am__objects_37)
 sato_cli_OBJECTS = $(am_sato_cli_OBJECTS)
 sato_cli_DEPENDENCIES = $(LIBSATO_CLI) $(am__DEPENDENCIES_4) \
@@ -1409,7 +1409,7 @@ sato_cli_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(sato_cli_CXXFLAGS) \
 	$(CXXFLAGS) $(sato_cli_LDFLAGS) $(LDFLAGS) -o $@
 am__sato_tx_SOURCES_DIST = sato-tx.cpp sato-tx-res.rc
-am__objects_38 = sato-tx-res.$(OBJEXT)
+#am__objects_38 = sato-tx-res.$(OBJEXT)
 am_sato_tx_OBJECTS = sato_tx-sato-tx.$(OBJEXT) $(am__objects_38)
 sato_tx_OBJECTS = $(am_sato_tx_OBJECTS)
 sato_tx_DEPENDENCIES = $(am__DEPENDENCIES_4) $(LIBSATO_COMMON) \
@@ -1419,7 +1419,7 @@ sato_tx_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(sato_tx_CXXFLAGS) \
 	$(CXXFLAGS) $(sato_tx_LDFLAGS) $(LDFLAGS) -o $@
 am__satod_SOURCES_DIST = satod.cpp satod-res.rc
-am__objects_39 = satod-res.$(OBJEXT)
+#am__objects_39 = satod-res.$(OBJEXT)
 am_satod_OBJECTS = satod-satod.$(OBJEXT) $(am__objects_39)
 satod_OBJECTS = $(am_satod_OBJECTS)
 satod_DEPENDENCIES = $(LIBSATO_SERVER) $(LIBSATO_COMMON) \
@@ -1910,7 +1910,7 @@ am__set_TESTS_bases = \
   bases=`echo $$bases`
 RECHECK_LOGS = $(TEST_LOGS)
 TEST_SUITE_LOG = test-suite.log
-TEST_EXTENSIONS = .exe .test
+TEST_EXTENSIONS =  .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 LOG_COMPILE = $(LOG_COMPILER) $(AM_LOG_FLAGS) $(LOG_FLAGS)
 am__set_b = \
@@ -1924,7 +1924,7 @@ am__set_b = \
       b='$*';; \
   esac
 am__test_logs1 = $(TESTS:=.log)
-am__test_logs2 = $(am__test_logs1:.exe.log=.log)
+am__test_logs2 = $(am__test_logs1:.log=.log)
 TEST_LOGS = $(am__test_logs2:.test.log=.log)
 TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/build-aux/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
@@ -1962,55 +1962,55 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} /root/Sato/build-aux/missing aclocal-1.15
+ACLOCAL = ${SHELL} /home/erwin/development/Sato-1/build-aux/missing aclocal-1.15
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
-AR = /usr/bin/x86_64-w64-mingw32-ar
+AR = ar
 ARFLAGS = cr
-AUTOCONF = ${SHELL} /root/Sato/build-aux/missing autoconf
-AUTOHEADER = ${SHELL} /root/Sato/build-aux/missing autoheader
-AUTOMAKE = ${SHELL} /root/Sato/build-aux/missing automake-1.15
+AUTOCONF = ${SHELL} /home/erwin/development/Sato-1/build-aux/missing autoconf
+AUTOHEADER = ${SHELL} /home/erwin/development/Sato-1/build-aux/missing autoheader
+AUTOMAKE = ${SHELL} /home/erwin/development/Sato-1/build-aux/missing automake-1.15
 AWK = mawk
 BDB_CFLAGS = 
 BDB_CPPFLAGS = 
 BDB_LIBS = -ldb_cxx-4.8
-BOOST_CHRONO_LIB = -lboost_chrono-mt-s
-BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -mthreads -I/root/Sato/depends/x86_64-w64-mingw32/share/../include
-BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt-s
-BOOST_LDFLAGS = -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib
-BOOST_LIBS = -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib -lboost_system-mt-s -lboost_filesystem-mt-s -lboost_program_options-mt-s -lboost_thread_win32-mt-s -lboost_chrono-mt-s
-BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt-s
-BOOST_SYSTEM_LIB = -lboost_system-mt-s
-BOOST_THREAD_LIB = -lboost_thread_win32-mt-s
-BOOST_UNIT_TEST_FRAMEWORK_LIB = -lboost_unit_test_framework-mt-s
+BOOST_CHRONO_LIB = -lboost_chrono-mt
+BOOST_CPPFLAGS = -DBOOST_SP_USE_STD_ATOMIC -DBOOST_AC_USE_STD_ATOMIC -pthread -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../include
+BOOST_FILESYSTEM_LIB = -lboost_filesystem-mt
+BOOST_LDFLAGS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../lib
+BOOST_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../lib -lboost_system-mt -lboost_filesystem-mt -lboost_program_options-mt -lboost_thread-mt -lboost_chrono-mt
+BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options-mt
+BOOST_SYSTEM_LIB = -lboost_system-mt
+BOOST_THREAD_LIB = -lboost_thread-mt
+BOOST_UNIT_TEST_FRAMEWORK_LIB = -lboost_unit_test_framework-mt
 BREW = 
-CC = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/ccache x86_64-w64-mingw32-gcc
-CCACHE = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/ccache
+CC = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/ccache gcc -m64
+CCACHE = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/ccache
 CCDEPMODE = depmode=gcc3
 CFLAGS = -pipe -O2 
 CLIENT_VERSION_BUILD = 0
 CLIENT_VERSION_IS_RELEASE = true
 CLIENT_VERSION_MAJOR = 1
 CLIENT_VERSION_MINOR = 1
-CLIENT_VERSION_REVISION = 4
+CLIENT_VERSION_REVISION = 5
 COMPAT_LDFLAGS = 
 COPYRIGHT_HOLDERS = The %s developers
 COPYRIGHT_HOLDERS_FINAL = The Sato Core developers
 COPYRIGHT_HOLDERS_SUBSTITUTION = Sato Core
 COPYRIGHT_YEAR = 2021
-CPP = x86_64-w64-mingw32-gcc -E
-CPPFILT = /usr/bin/x86_64-w64-mingw32-c++filt
-CPPFLAGS = -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS -D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -D_FILE_OFFSET_BITS=64
-CRYPTO_CFLAGS = 
-CRYPTO_LIBS = -lcrypto
-CXX = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/ccache x86_64-w64-mingw32-g++ -std=c++11
-CXXCPP = x86_64-w64-mingw32-g++ -std=c++11 -E
+CPP = gcc -m64 -E
+CPPFILT = /usr/bin/c++filt
+CPPFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../include/  -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS -fPIC
+CRYPTO_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+CRYPTO_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lcrypto -ldl
+CXX = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/ccache g++ -m64 -std=c++11
+CXXCPP = g++ -m64 -std=c++11 -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -pipe -O2 
+CXXFLAGS = -pipe -O2  -fPIC
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
-DLLTOOL = x86_64-w64-mingw32-dlltool
+DLLTOOL = false
 DOXYGEN = 
 DSYMUTIL = 
 DUMPBIN = 
@@ -2019,21 +2019,21 @@ ECHO_N = -n
 ECHO_T = 
 EGREP = /bin/grep -E
 ERROR_CXXFLAGS = 
-EVENT_CFLAGS = 
-EVENT_LIBS = -levent
-EVENT_PTHREADS_CFLAGS = 
-EVENT_PTHREADS_LIBS = 
-EXEEXT = .exe
+EVENT_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+EVENT_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -levent
+EVENT_PTHREADS_CFLAGS = -pthread -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+EVENT_PTHREADS_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -levent_pthreads -levent
+EXEEXT = 
 EXTENDED_FUNCTIONAL_TESTS = 
 FGREP = /bin/grep -F
-GCOV = /usr/bin/x86_64-w64-mingw32-gcov
+GCOV = /usr/bin/gcov
 GENHTML = 
 GENISOIMAGE = 
 GIT = /usr/bin/git
 GREP = /bin/grep
 HARDENED_CPPFLAGS =  -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 HARDENED_CXXFLAGS =  -Wstack-protector -fstack-protector-all
-HARDENED_LDFLAGS =  -Wl,--dynamicbase -Wl,--nxcompat -Wl,--high-entropy-va -pie
+HARDENED_LDFLAGS =  -Wl,-z,relro -Wl,-z,now -pie
 HAVE_CXX11 = 1
 HEXDUMP = /usr/bin/hexdump
 IMAGEMAGICK_CONVERT = 
@@ -2045,90 +2045,90 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LCOV = 
 LCOV_OPTS = 
-LD = /usr/bin/x86_64-w64-mingw32-ld
-LDFLAGS = -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib 
+LD = /usr/bin/ld -m elf_x86_64
+LDFLAGS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../lib 
 LEVELDB_CPPFLAGS =  $(am__append_14)
-LEVELDB_TARGET_FLAGS = -DOS_WINDOWS
+LEVELDB_TARGET_FLAGS = -DOS_LINUX
 LIBLEVELDB =  $(am__append_12)
 LIBMEMENV =  $(am__append_13)
 LIBOBJS = 
-LIBS = -lQt5PlatformSupport -lssp -lcrypt32 -liphlpapi -lshlwapi -lmswsock -lws2_32 -ladvapi32 -lrpcrt4 -luuid -loleaut32 -lole32 -lcomctl32 -lshell32 -lwinmm -lwinspool -lcomdlg32 -lgdi32 -luser32 -lkernel32 -lmingwthrd 
+LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LIBTOOL_APP_LDFLAGS =  -all-static
+LIBTOOL_APP_LDFLAGS = 
 LIPO = 
 LN_S = ln -s
-LRELEASE = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/lrelease
+LRELEASE = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/lrelease
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
 LUPDATE = 
 MAINT = 
-MAKEINFO = ${SHELL} /root/Sato/build-aux/missing makeinfo
-MAKENSIS = /usr/bin/makensis
+MAKEINFO = ${SHELL} /home/erwin/development/Sato-1/build-aux/missing makeinfo
+MAKENSIS = 
 MANIFEST_TOOL = :
-MINIUPNPC_CPPFLAGS = -DSTATICLIB -DMINIUPNP_STATICLIB
+MINIUPNPC_CPPFLAGS = 
 MINIUPNPC_LIBS = -lminiupnpc
 MKDIR_P = /bin/mkdir -p
-MOC = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/moc
+MOC = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/moc
 MOC_DEFS = -DHAVE_CONFIG_H -I$(srcdir)
-NM = x86_64-w64-mingw32-nm
+NM = nm
 NMEDIT = 
-OBJCOPY = /usr/bin/x86_64-w64-mingw32-objcopy
-OBJCXX = x86_64-w64-mingw32-g++ -std=c++11
+OBJCOPY = /usr/bin/objcopy
+OBJCXX = g++ -m64 -std=c++11
 OBJCXXDEPMODE = depmode=gcc3
 OBJCXXFLAGS = 
-OBJDUMP = x86_64-w64-mingw32-objdump
+OBJDUMP = objdump
 OBJEXT = o
 OTOOL = 
 OTOOL64 = 
 PACKAGE = sato
 PACKAGE_BUGREPORT = https://github.com/Satoex/Sato/issues
 PACKAGE_NAME = Sato Core
-PACKAGE_STRING = Sato Core 1.1.4
+PACKAGE_STRING = Sato Core 1.1.5
 PACKAGE_TARNAME = sato
 PACKAGE_URL = https://satoex.com/sato
-PACKAGE_VERSION = 1.1.4
+PACKAGE_VERSION = 1.1.5
 PATH_SEPARATOR = :
-PIC_FLAGS = 
+PIC_FLAGS = -fPIC
 PIE_FLAGS = -fPIE
 PKG_CONFIG = /usr/bin/pkg-config --static
 PKG_CONFIG_LIBDIR = 
-PKG_CONFIG_PATH = /root/Sato/depends/x86_64-w64-mingw32/share/../share/pkgconfig:/root/Sato/depends/x86_64-w64-mingw32/share/../lib/pkgconfig
+PKG_CONFIG_PATH = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../share/pkgconfig:/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../lib/pkgconfig
 PORT = 
-PROTOBUF_CFLAGS = 
-PROTOBUF_LIBS = -lprotobuf
-PROTOC = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/protoc
-PTHREAD_CC = x86_64-w64-mingw32-gcc
+PROTOBUF_CFLAGS = -pthread -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+PROTOBUF_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lprotobuf -pthread -lpthread -lz
+PROTOC = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/protoc
+PTHREAD_CC = gcc -m64
 PTHREAD_CFLAGS = -pthread
 PTHREAD_LIBS = 
 PYTHON = /usr/bin/python3.6
-PYTHONPATH = /root/Sato/depends/x86_64-w64-mingw32/share/../native/lib/python/dist-packages:
-QR_CFLAGS = 
-QR_LIBS = -lqrencode
+PYTHONPATH = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/lib/python/dist-packages:
+QR_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+QR_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lqrencode -lpthread
 QT4_CFLAGS = 
 QT4_LIBS = 
-QT5_CFLAGS = 
-QT5_LIBS = 
-QTPLATFORM_CFLAGS = 
-QTPLATFORM_LIBS = 
+QT5_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT5_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtpng -lharfbuzz -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt
+QTPLATFORM_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtPlatformSupport -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QTPLATFORM_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5PlatformSupport -lQt5Gui -lqtpng -lharfbuzz -lQt5DBus -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt
 QTPRINT_CFLAGS = 
 QTPRINT_LIBS = 
-QTXCBQPA_CFLAGS = 
-QTXCBQPA_LIBS = 
-QT_DBUS_CFLAGS = 
-QT_DBUS_INCLUDES = 
-QT_DBUS_LIBS = -lQt5DBus -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib
-QT_INCLUDES = -I/root/Sato/depends/x86_64-w64-mingw32/share/../include -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtCore -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtGui -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtWidgets -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtNetwork -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtTest -I/root/Sato/depends/x86_64-w64-mingw32/share/../include/QtDBus
-QT_LDFLAGS =  -mwindows
-QT_LIBS = -lqwindows -lqminimal -lQt5Widgets -lQt5Network -lQt5Gui     -lQt5Core    -lqtharfbuzzng -lqtpcre -lqtpng -lz  -limm32  -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib -L/root/Sato/depends/x86_64-w64-mingw32/share/../plugins/platforms
+QTXCBQPA_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtXcbQpa -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtPlatformSupport -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QTXCBQPA_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -L//home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lX11 -lX11-xcb -lxcb -lxcb-static -lQt5PlatformSupport -lQt5DBus -lfontconfig -lfreetype -lQt5Gui -lqtpng -lharfbuzz -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5PlatformSupport -lQt5Gui -lqtpng -lharfbuzz -lQt5DBus -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt
+QT_DBUS_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_DBUS_INCLUDES = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtDBus -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_DBUS_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5DBus -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt
+QT_INCLUDES = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtNetwork -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtWidgets -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtGui -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_LDFLAGS = 
+QT_LIBS = -lqxcb -lxcb-static -lqminimal -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -L//home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5XcbQpa -lX11 -lX11-xcb -lxcb -lxcb-static -lQt5PlatformSupport -lQt5DBus -lfontconfig -lfreetype -lQt5Gui -lqtpng -lharfbuzz -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5PlatformSupport -lQt5Gui -lqtpng -lharfbuzz -lQt5DBus -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5PlatformSupport -lQt5Gui -lqtpng -lharfbuzz -lQt5DBus -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lfontconfig -lfreetype -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5Network -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lz -lssl -lcrypto -lQt5Widgets -lQt5Gui -lqtpng -lharfbuzz -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lQt5Gui -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lqtpng -lharfbuzz -lz -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../plugins/platforms
 QT_PIE_FLAGS = -fPIE
 QT_SELECT = qt5
-QT_TEST_CFLAGS = 
-QT_TEST_INCLUDES = 
-QT_TEST_LIBS = -lQt5Test -L/root/Sato/depends/x86_64-w64-mingw32/share/../lib
-QT_TRANSLATION_DIR = /root/Sato/depends/x86_64-w64-mingw32/share/../translations
-RANLIB = /usr/bin/x86_64-w64-mingw32-ranlib
-RCC = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/rcc
-READELF = /usr/bin/x86_64-w64-mingw32-readelf
+QT_TEST_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_TEST_INCLUDES = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtTest -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/QtCore
+QT_TEST_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lQt5Test -lQt5Core -lz -lqtpcre -lm -ldl -lrt -lpthread -lQt5Core -lpthread -lz -lqtpcre -lm -ldl -lrt
+QT_TRANSLATION_DIR = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../translations
+RANLIB = ranlib
+RCC = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/rcc
+READELF = /usr/bin/readelf
 RELDFLAGS = 
 RSVG_CONVERT = 
 SATO_CLI_NAME = sato-cli
@@ -2139,28 +2139,28 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 SSE42_CXXFLAGS = -msse4.2
-SSL_CFLAGS = 
-SSL_LIBS = -lssl
-STRIP = /usr/bin/x86_64-w64-mingw32-strip
+SSL_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+SSL_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lssl -lcrypto -ldl
+STRIP = /usr/bin/strip
 TESTDEFS = 
 TIFFCP = 
-UIC = /root/Sato/depends/x86_64-w64-mingw32/share/../native/bin/uic
+UIC = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/share/../native/bin/uic
 UNIVALUE_CFLAGS = -I$(srcdir)/univalue/include
 UNIVALUE_LIBS = univalue/libunivalue.la
 USE_QRCODE = 
 USE_UPNP = 
-VERSION = 1.1.4
-WINDOWS_BITS = 64
-WINDRES = /usr/bin/x86_64-w64-mingw32-windres
-X11XCB_CFLAGS = 
-X11XCB_LIBS = 
-XGETTEXT = 
-ZMQ_CFLAGS =  -DZMQ_STATIC
-ZMQ_LIBS = -lzmq
-abs_builddir = /root/Sato/src
-abs_srcdir = /root/Sato/src
-abs_top_builddir = /root/Sato
-abs_top_srcdir = /root/Sato
+VERSION = 1.1.5
+WINDOWS_BITS = 
+WINDRES = 
+X11XCB_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include/xcb-shared -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+X11XCB_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lX11-xcb -lX11 -lpthread -lxcb -lXau
+XGETTEXT = /usr/bin/xgettext
+ZMQ_CFLAGS = -I/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/include
+ZMQ_LIBS = -L/home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu/lib -lzmq
+abs_builddir = /home/erwin/development/Sato-1/src
+abs_srcdir = /home/erwin/development/Sato-1/src
+abs_top_builddir = /home/erwin/development/Sato-1
+abs_top_srcdir = /home/erwin/development/Sato-1
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_CXX = 
@@ -2184,15 +2184,15 @@ datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-w64-mingw32
-host_alias = x86_64-w64-mingw32
+host = x86_64-pc-linux-gnu
+host_alias = x86_64-pc-linux-gnu
 host_cpu = x86_64
-host_os = mingw32
-host_vendor = w64
+host_os = linux-gnu
+host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /root/Sato/build-aux/install-sh
+install_sh = ${SHELL} /home/erwin/development/Sato-1/build-aux/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -2201,7 +2201,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /root/Sato/depends/x86_64-w64-mingw32
+prefix = /home/erwin/development/Sato-1/depends/x86_64-pc-linux-gnu
 program_transform_name = s,x,x,
 psdir = ${docdir}
 runstatedir = ${localstatedir}/run
@@ -2210,7 +2210,7 @@ sharedstatedir = ${prefix}/com
 srcdir = .
 subdirs =  src/univalue src/secp256k1
 sysconfdir = ${prefix}/etc
-target_alias = 
+target_alias = linux
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
@@ -14204,13 +14204,13 @@ qt/test/test_sato-qt.log: qt/test/test_sato-qt$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
-.test$(EXEEXT).log:
-	@p='$<'; \
-	$(am__set_b); \
-	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+#.test$(EXEEXT).log:
+#	@p='$<'; \
+#	$(am__set_b); \
+#	$(am__check_pre) $(TEST_LOG_DRIVER) --test-name "$$f" \
+#	--log-file $$b.log --trs-file $$b.trs \
+#	$(am__common_driver_flags) $(AM_TEST_LOG_DRIVER_FLAGS) $(TEST_LOG_DRIVER_FLAGS) -- $(TEST_LOG_COMPILE) \
+#	"$$tst" $(AM_TESTS_FD_REDIRECT)
 
 distdir: $(DISTFILES)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
